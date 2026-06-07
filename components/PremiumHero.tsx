@@ -53,7 +53,7 @@ export default function PremiumHero() {
           className="flex flex-col sm:flex-row gap-6 justify-center items-center"
         >
           <motion.a
-            href="https://discord.gg/your-invite"
+            href="https://discord.gg/2UjMvncmQZ"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.02 }}

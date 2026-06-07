@@ -3,7 +3,6 @@
 import PremiumHero from '@/components/PremiumHero'
 import ExclusiveBots from '@/components/ExclusiveBots'
 import PremiumStats from '@/components/PremiumStats'
-import PremiumHowItWorks from '@/components/PremiumHowItWorks'
 import PremiumFooter from '@/components/PremiumFooter'
 import AmbientLights from '@/components/AmbientLights'
 
@@ -14,7 +13,6 @@ export default function Home() {
       <PremiumHero />
       <ExclusiveBots />
       <PremiumStats />
-      <PremiumHowItWorks />
       <PremiumFooter />
     </main>
   )

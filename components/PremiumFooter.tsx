@@ -33,7 +33,7 @@ export default function PremiumFooter() {
           viewport={{ once: true }}
           className="mt-12 pt-8 border-t border-highlight/10 text-center text-muted"
         >
-          © 2025 I Can Say - No Topo sempre!
+          © 2024 I Can Say - No Topo sempre!
         </motion.div>
       </div>
     </footer>

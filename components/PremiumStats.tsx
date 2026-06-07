@@ -162,7 +162,7 @@ export default function PremiumStats() {
 
               {/* Join Button */}
               <motion.a
-                href="https://discord.gg/your-invite"
+                href="https://discord.gg/2UjMvncmQZ"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.02 }}
