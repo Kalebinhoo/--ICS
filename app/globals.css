@@ -1,0 +1,42 @@
+/* stylelint-disable at-rule-no-unknown */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* stylelint-enable at-rule-no-unknown */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #120302;
+  color: #FFFFFF;
+  overflow-x: hidden;
+}
+
+@layer utilities {
+  .glass-card {
+    background: rgba(37, 4, 3, 0.4);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(247, 179, 141, 0.1);
+  }
+  
+  .text-gradient-copper {
+    background: linear-gradient(135deg, #F7B38D 0%, #8C3A08 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-copper {
+    box-shadow: 0 0 40px rgba(140, 58, 8, 0.3);
+  }
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-feature-settings: 'ss01', 'ss02', 'cv01', 'cv03';
+  }
+}
