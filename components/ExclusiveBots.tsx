@@ -38,7 +38,7 @@ export default function ExclusiveBots() {
   }
 
   return (
-    <section className="relative py-32 px-6 overflow-hidden">
+    <section id="platforms" className="relative py-32 px-6 overflow-hidden">
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="w-full h-96 bg-gradient-radial-copper opacity-5 blur-3xl" />
       </div>

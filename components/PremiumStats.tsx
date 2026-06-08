@@ -69,7 +69,7 @@ export default function PremiumStats() {
   }, [])
 
   return (
-    <section className="relative py-32 px-6">
+    <section id="community" className="relative py-32 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div

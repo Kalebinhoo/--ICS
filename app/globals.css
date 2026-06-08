@@ -10,10 +10,39 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
 body {
   background: #120302;
   color: #FFFFFF;
   overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #120302;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #6B2400 0%, #8C3A08 100%);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #8C3A08 0%, #F7B38D 100%);
+}
+
+/* Selection */
+::selection {
+  background: rgba(247, 179, 141, 0.3);
+  color: #FFFFFF;
 }
 
 @layer utilities {
@@ -39,4 +68,38 @@ body {
   h1, h2, h3, h4, h5, h6 {
     font-feature-settings: 'ss01', 'ss02', 'cv01', 'cv03';
   }
+  
+  /* Better text rendering */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Focus visible for accessibility */
+  *:focus-visible {
+    outline: 2px solid #F7B38D;
+    outline-offset: 2px;
+  }
+}
+
+/* Loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(247, 179, 141, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 1000px 100%;
 }
