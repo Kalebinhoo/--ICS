@@ -1,9 +1,8 @@
 'use client'
 
-import { motion, AnimatePresence } from 'framer-motion'
-import { Bot } from 'lucide-react'
-import Image from 'next/image'
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
+import { Bot } from 'lucide-react'
 
 const platforms = [
   { id: 1, name: 'Alura', image: '/platforms/alura.png' },
@@ -18,24 +17,27 @@ const platforms = [
 
 export default function ExclusiveBots() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % platforms.length)
-    }, 2500)
-
-    return () => clearInterval(interval)
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
-  const getVisiblePlatforms = () => {
-    const prev = (currentIndex - 1 + platforms.length) % platforms.length
-    const next = (currentIndex + 1) % platforms.length
-    return [
-      { ...platforms[prev], position: 'left' },
-      { ...platforms[currentIndex], position: 'center' },
-      { ...platforms[next], position: 'right' },
-    ]
-  }
+  useEffect(() => {
+    // Rotação mais lenta no mobile
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % platforms.length)
+    }, isMobile ? 3500 : 2500)
+
+    return () => clearInterval(interval)
+  }, [isMobile])
+
+  const currentPlatform = platforms[currentIndex]
 
   return (
     <section id="platforms" className="relative py-32 px-6 overflow-hidden">
@@ -44,110 +46,63 @@ export default function ExclusiveBots() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-20"
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-6 py-3 mb-8 glass-card rounded-full"
-          >
+        {/* Header */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 px-6 py-3 mb-8 glass-card rounded-full">
             <Bot className="w-5 h-5 text-highlight" />
             <span className="text-sm font-medium text-muted tracking-wide">
               Plataformas Integradas
             </span>
-          </motion.div>
+          </div>
 
-          <h2 className="text-5xl md:text-6xl font-display font-bold mb-6 tracking-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 tracking-tight">
             Várias Plataformas <span className="text-gradient-copper">Exclusivas</span>
           </h2>
-          <p className="text-xl text-muted max-w-3xl mx-auto">
-            Acesso direto às melhores plataformas educacionais do Brasil, 
-            tudo integrado no nosso servidor para facilitar seus estudos
+          <p className="text-lg md:text-xl text-muted max-w-3xl mx-auto">
+            Acesso direto às melhores plataformas educacionais do Brasil
           </p>
-        </motion.div>
-
-        <div className="relative h-[400px] flex items-center justify-center">
-          <AnimatePresence mode="sync">
-            {getVisiblePlatforms().map((platform, idx) => {
-              const isCenter = platform.position === 'center'
-              const isLeft = platform.position === 'left'
-              const isRight = platform.position === 'right'
-
-              return (
-                <motion.div
-                  key={`${platform.name}-${currentIndex}-${idx}`}
-                  initial={{ 
-                    opacity: 0, 
-                    scale: 0.5,
-                    x: isLeft ? -300 : isRight ? 300 : 0,
-                    y: 50,
-                  }}
-                  animate={{ 
-                    opacity: isCenter ? 1 : 0.3,
-                    scale: isCenter ? 1 : 0.7,
-                    x: isLeft ? -280 : isRight ? 280 : 0,
-                    y: isCenter ? 0 : 40,
-                  }}
-                  exit={{ 
-                    opacity: 0, 
-                    scale: 0.5,
-                    y: -50,
-                  }}
-                  transition={{ 
-                    duration: 0.8,
-                    ease: [0.43, 0.13, 0.23, 0.96],
-                  }}
-                  className="absolute"
-                  style={{ zIndex: isCenter ? 10 : 5 }}
-                >
-                  <div className="relative">
-                    <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-3/4 h-6 bg-black/60 rounded-full blur-2xl" />
-                    
-                    <motion.div
-                      animate={{ 
-                        y: isCenter ? [0, -15, 0] : [0, -8, 0],
-                      }}
-                      transition={{ 
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: 'easeInOut',
-                      }}
-                      className="relative"
-                    >
-                      <div className="relative w-48 h-48 md:w-64 md:h-64">
-                        <Image
-                          src={platform.image}
-                          alt={platform.name}
-                          fill
-                          className="object-contain"
-                          priority={isCenter}
-                        />
-                      </div>
-                    </motion.div>
-                  </div>
-                </motion.div>
-              )
-            })}
-          </AnimatePresence>
         </div>
 
-        <motion.div
-          key={platforms[currentIndex].name}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className="text-center mt-12"
-        >
-          <h3 className="text-3xl font-bold text-gradient-copper">
-            {platforms[currentIndex].name}
+        {/* Plataforma Atual - Versão Leve */}
+        <div className="relative h-[300px] md:h-[400px] flex items-center justify-center">
+          <div 
+            key={currentPlatform.id}
+            className="transition-opacity duration-500"
+          >
+            <div className="relative w-40 h-40 md:w-64 md:h-64 mx-auto">
+              <Image
+                src={currentPlatform.image}
+                alt={currentPlatform.name}
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Nome da Plataforma */}
+        <div className="text-center mt-8">
+          <h3 className="text-2xl md:text-3xl font-bold text-gradient-copper transition-all duration-500">
+            {currentPlatform.name}
           </h3>
-        </motion.div>
+        </div>
+
+        {/* Indicadores */}
+        <div className="flex justify-center gap-2 mt-8">
+          {platforms.map((platform, idx) => (
+            <button
+              key={platform.id}
+              onClick={() => setCurrentIndex(idx)}
+              className={`w-2 h-2 rounded-full transition-all ${
+                idx === currentIndex 
+                  ? 'bg-highlight w-8' 
+                  : 'bg-muted/30 hover:bg-muted/50'
+              }`}
+              aria-label={`Ver ${platform.name}`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   )

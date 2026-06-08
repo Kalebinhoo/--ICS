@@ -62,6 +62,27 @@ body {
   .glow-copper {
     box-shadow: 0 0 40px rgba(140, 58, 8, 0.3);
   }
+  
+  /* Animações leves para performance */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+  }
+  
+  .animate-fade-in-up-delay {
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+  }
+  
+  .animate-fade-in-up-delay-2 {
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+  }
+  
+  .animate-fade-in-up-delay-3 {
+    animation: fadeInUp 0.8s ease-out 0.8s both;
+  }
 }
 
 @layer base {
@@ -83,7 +104,27 @@ body {
   }
 }
 
-/* Loading animation */
+/* Keyframes para animações CSS */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes shimmer {
   0% {
     background-position: -1000px 0;
@@ -102,4 +143,15 @@ body {
     transparent 100%
   );
   background-size: 1000px 100%;
+}
+
+/* Reduzir animações em dispositivos com preferência de movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
