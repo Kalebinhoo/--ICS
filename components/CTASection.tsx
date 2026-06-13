@@ -1,15 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Sparkles, ArrowRight, Users, Shield, Zap } from 'lucide-react'
+import { Sparkles, ArrowRight } from 'lucide-react'
 
 export default function CTASection() {
-  const benefits = [
-    { icon: Users, text: '+74 mil membros ativos' },
-    { icon: Shield, text: '100% gratuito e seguro' },
-    { icon: Zap, text: 'Suporte instantâneo 24/7' },
-  ]
-
   return (
     <section className="relative py-32 px-6 overflow-hidden">
       {/* Background Effects */}
@@ -64,29 +58,6 @@ export default function CTASection() {
             Entre gratuitamente e veja por que somos a comunidade #1 do Brasil.
           </motion.p>
 
-          {/* Benefits */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="flex flex-wrap justify-center gap-6 mb-12"
-          >
-            {benefits.map((benefit, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6 + index * 0.1 }}
-                className="flex items-center gap-2 px-4 py-2 glass-card rounded-full"
-              >
-                <benefit.icon className="w-4 h-4 text-highlight" />
-                <span className="text-sm font-medium">{benefit.text}</span>
-              </motion.div>
-            ))}
-          </motion.div>
-
           {/* CTA Button */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -116,7 +87,6 @@ export default function CTASection() {
             transition={{ delay: 1, duration: 0.8 }}
             className="mt-8 text-sm text-muted"
           >
-            ✨ Sem cartão de crédito • Acesso instantâneo • Cancelamento livre
           </motion.p>
         </motion.div>
       </div>

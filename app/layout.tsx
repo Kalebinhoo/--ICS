@@ -9,8 +9,8 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'I Can Say - A Maior Comunidade de Scripts Escolares do Brasil',
-  description: 'Mais de 74 mil estudantes brasileiros já descobriram o segredo: scripts prontos, comunidade ativa e ajuda 24/7 para todas suas tarefas escolares. Entre grátis agora!',
+  title: 'I Can Say™',
+  description: 'Mais de milhões de estudantes brasileiros já descobriram o segredo de scripts prontos, comunidade ativa e ajuda 24/7 para todas suas tarefas escolares.',
   keywords: [
     'scripts escolares',
     'discord educação',

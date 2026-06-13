@@ -65,27 +65,6 @@ export default function PremiumHero() {
           </a>
         </div>
 
-        {/* Social Proof */}
-        <div className="mt-16 flex flex-wrap items-center justify-center gap-8 text-sm text-muted animate-fade-in-up-delay-3">
-          <div className="flex items-center gap-2">
-            <div className="flex -space-x-2">
-              {['👨‍🎓', '👩‍🎓', '🧑‍💻', '👨‍🔬'].map((emoji, i) => (
-                <div key={i} className="w-8 h-8 rounded-full bg-gradient-copper flex items-center justify-center border-2 border-primary">
-                  {emoji}
-                </div>
-              ))}
-            </div>
-            <span className="font-medium">+74 mil membros</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-2xl">⭐</span>
-            <span className="font-medium">4.9/5 avaliação média</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-2xl">🚀</span>
-            <span className="font-medium">100% grátis</span>
-          </div>
-        </div>
       </div>
     </section>
   )

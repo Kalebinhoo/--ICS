@@ -1,37 +1,27 @@
 'use client'
 
-import { Mic, Calendar, Trophy, Users, Target, BookOpen } from 'lucide-react'
+import { Mic, Calendar, Trophy, Users, Target, BookOpen, Bot } from 'lucide-react'
 
 const features = [
   {
-    icon: Mic,
+    icon: Bot,
     title: 'Scripts Escolares',
-    description: 'Acesse milhares de scripts prontos para trabalhos e lições de casa',
-  },
-  {
-    icon: Calendar,
-    title: 'Eventos da Comunidade',
-    description: 'Participe de eventos, sorteios e atividades exclusivas do servidor',
-  },
-  {
-    icon: Trophy,
-    title: 'Sistema de Níveis',
-    description: 'Ganhe XP, suba de nível e desbloqueie recompensas exclusivas',
+    description: 'Acesse de forma rápida o nossos bots para concluir as suas atividades',
   },
   {
     icon: Users,
     title: 'Suporte Ativo',
-    description: 'Tire dúvidas e receba ajuda de membros experientes 24/7',
+    description: 'Tire dúvidas e receba ajuda de suportes de forma rápida'
   },
   {
     icon: Target,
     title: 'Plataformas Integradas',
-    description: 'Acesso direto a Alura, Khan Academy, Matific e muito mais',
+    description: 'Acesso direto a Tarefas Automaticas, Redação, Speak, Expansão entre outros...',
   },
   {
     icon: BookOpen,
-    title: 'Biblioteca de Conteúdo',
-    description: 'Materiais de estudo, resumos e recursos educacionais organizados',
+    title: 'Apostilas liberada grátis',
+    description: 'Temos todas as apostilas de todas as séries e bimestre para você avançar as atividades das páginas e parar de perder seu tempo usando a cabeça para achar respostas!',
   },
 ]
 
